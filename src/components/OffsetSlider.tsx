@@ -63,8 +63,23 @@ const OffsetSlider: React.FC<OffsetSliderProps> = ({
       
       {/* X Offset */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#aaa' }}>
-          <span>X-Offset: {xValue.toFixed(4)}</span>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#aaa', alignItems: 'center' }}>
+          <span>X-Offset:</span>
+          <input
+            type="number"
+            value={xValue}
+            step={xStep}
+            onChange={(e) => onChange(parseFloat(e.target.value) || 0, yValue)}
+            style={{
+              backgroundColor: '#2d2d2d',
+              border: '1px solid #444',
+              color: 'white',
+              borderRadius: '4px',
+              padding: '2px 4px',
+              width: '80px',
+              fontSize: '12px'
+            }}
+          />
         </div>
         <input
           type="range"
@@ -83,8 +98,23 @@ const OffsetSlider: React.FC<OffsetSliderProps> = ({
 
       {/* Y Offset */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#aaa' }}>
-          <span>Y-Offset: {yValue.toFixed(4)}</span>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#aaa', alignItems: 'center' }}>
+          <span>Y-Offset:</span>
+          <input
+            type="number"
+            value={yValue}
+            step={yStep}
+            onChange={(e) => onChange(xValue, parseFloat(e.target.value) || 0)}
+            style={{
+              backgroundColor: '#2d2d2d',
+              border: '1px solid #444',
+              color: 'white',
+              borderRadius: '4px',
+              padding: '2px 4px',
+              width: '80px',
+              fontSize: '12px'
+            }}
+          />
         </div>
         <input
           type="range"

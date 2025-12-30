@@ -509,9 +509,9 @@ function App() {
       getRadius: (_, { index }) => {
         const inRange = maskRanges.some(range => index >= range[0] && index <= range[1]);
         if (!inRange) return 0;
-        const baseRadius = selectedIndices.has(index) ? 6 : 3;
+        const baseRadius = selectedIndices.has(index) ? 4 : 1.5;
         // Shrink as zoom increases to allow for more precision
-        return baseRadius * Math.pow(2.05, -(viewState.zoom - 2));
+        return baseRadius * Math.pow(3.05, -(viewState.zoom));
       },
       getLineColor: (_, { index }) => {
         const inRange = maskRanges.some(range => index >= range[0] && index <= range[1]);
@@ -528,7 +528,7 @@ function App() {
           return [0, 0, 255, 255]; // Blue
         }
 
-        return selectedIndices.has(index) ? [255, 165, 0, 255] : [255, 165, 0, 255];
+        return selectedIndices.has(index) ? [255, 255, 255, 255] : [255, 165, 0, 255];
       },
       getLineWidth: (_, { index }) => {
         const baseWidth = selectedIndices.has(index) ? 2 : 1;
@@ -562,7 +562,7 @@ function App() {
       <header className="header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <FileSpreadsheet size={20} color="#7575f2" />
-          <h1>Displacement vs Force Plot</h1>
+          <h1>point-editor</h1>
         </div>
         <div className="controls">
           <input
